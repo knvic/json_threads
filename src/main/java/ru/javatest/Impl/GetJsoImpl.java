@@ -22,14 +22,16 @@ Work_file_Impl work_file_Impl;
        public String to_json(Map map) throws JsonProcessingException {
        ObjectMapper mapper = new ObjectMapper();
        String jsonString = mapper.writeValueAsString(map);
+        System.out.println("Класс преобразован в строку JSON " + jsonString);
        String filename = work_file_Impl.create_file(jsonString);
-      // System.out.println("json " + jsonString);
+       System.out.print("Строка  " + jsonString+ "записана в созданный файл ");
         return filename;
     }
 
 @Override
         public  Map from_json(String filename) {
         String str= work_file_Impl.read_from_file(filename);
+        System.out.println("Строка  " + str+ " прочитана из файла "+filename);
         ObjectMapper mapper = new ObjectMapper();
         Map newMap = null;
         try {
@@ -37,7 +39,7 @@ Work_file_Impl work_file_Impl;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //System.out.println(newMap.toString());
+        System.out.print("Строка отображена на класс ");
         return newMap;
     }
 

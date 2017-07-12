@@ -21,6 +21,7 @@ public class ThreadRunImpl implements ThreadRun{
 
     @Override
     public String thread_run(String count_vlue,String count_threads){
+        System.out.println(new Date()+ "::" + "Запуск потоков, согласно полученных данных ::");
         ExecutorService executor = Executors.newFixedThreadPool(Integer.parseInt(count_threads));
         List<Future<String>> list = new ArrayList<Future<String>>();
         MyCallable callable = new MyCallable(0,Integer.parseInt(count_vlue));
