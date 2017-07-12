@@ -4,10 +4,16 @@ package ru.javatest.Main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import ru.javatest.Impl.GetJsoImpl;
 import ru.javatest.Impl.ThreadRunImpl;
 import ru.javatest.Impl.Work_file_Impl;
 import ru.javatest.Object.Map;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import static javax.swing.text.StyleConstants.Size;
 
 
 /**
@@ -24,13 +30,15 @@ public class Main  {
         Work_file_Impl work_file= (Work_file_Impl) context.getBean("work_file_Impl");
         ThreadRunImpl threadRun = (ThreadRunImpl)context.getBean("threadRunImpl");
 
-      /*  Scanner sc = new Scanner(System.in);
-        System.out.println("Введите число:");
-        int a = sc.nextInt();
-        sc.close();
-        System.out.println("Введено число:" + a);*/
+      
+        BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
+        System.out.println("Введите число окончания вывода:");
 
-Map map1= new Map("3","8");
+        String count_value = reader.readLine();
+        System.out.println("Введите число потоков:");
+        String count_threads = reader.readLine();
+
+Map map1= new Map(count_value,count_threads);
         String json =  getJso.to_json(map1);
         System.out.println(json);
         System.out.println("файл создан "+work_file.create_file(json));
