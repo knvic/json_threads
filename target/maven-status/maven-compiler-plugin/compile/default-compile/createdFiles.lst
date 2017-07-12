@@ -1,0 +1,10 @@
+ru\javatest\Object\MyCallable.class
+ru\javatest\Object\Map.class
+ru\javatest\interfaces\ThreadRun.class
+ru\javatest\Impl\GetJsoImpl.class
+ru\javatest\interfaces\Work_file.class
+ru\javatest\Main\MyBeanPostProcessor.class
+ru\javatest\Impl\Work_file_Impl.class
+ru\javatest\interfaces\GetJson.class
+ru\javatest\Impl\ThreadRunImpl.class
+ru\javatest\Main\Main.class
