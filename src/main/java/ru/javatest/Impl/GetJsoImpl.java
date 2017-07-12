@@ -15,18 +15,21 @@ import java.io.*;
  */
 @Component
 public class GetJsoImpl implements GetJson {
-
+@Autowired
+Work_file_Impl work_file_Impl;
 
 @Override
        public String to_json(Map map) throws JsonProcessingException {
        ObjectMapper mapper = new ObjectMapper();
        String jsonString = mapper.writeValueAsString(map);
+       String filename = work_file_Impl.create_file(jsonString);
       // System.out.println("json " + jsonString);
-        return jsonString;
+        return filename;
     }
 
 @Override
-        public  Map from_json(String str) {
+        public  Map from_json(String filename) {
+        String str= work_file_Impl.read_from_file(filename);
         ObjectMapper mapper = new ObjectMapper();
         Map newMap = null;
         try {

@@ -9,6 +9,6 @@ import ru.javatest.Object.Map;
 public interface GetJson {
 
     String to_json(Map map) throws JsonProcessingException;
-    Map from_json(String str);
+    Map from_json(String filename);
 
 }
