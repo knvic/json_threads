@@ -19,7 +19,7 @@ public class Main  {
 
     public static void main(String[] args) throws Exception {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("all_context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         GetJsoImpl getJso= (GetJsoImpl) context.getBean("getJsoImpl");
         Work_file_Impl work_file= (Work_file_Impl) context.getBean("work_file_Impl");
         ThreadRunImpl threadRun = (ThreadRunImpl)context.getBean("threadRunImpl");
