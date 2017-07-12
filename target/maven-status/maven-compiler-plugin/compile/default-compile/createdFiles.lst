@@ -6,6 +6,7 @@ ru\javatest\interfaces\GetJson.class
 ru\javatest\Util\Validation.class
 ru\javatest\Impl\ThreadRunImpl.class
 ru\javatest\Object\MyCallable.class
+ru\javatest\Util\Rand.class
 ru\javatest\interfaces\Work_file.class
 ru\javatest\Impl\Keyboard_ent_Impl.class
 ru\javatest\Impl\Work_file_Impl.class
