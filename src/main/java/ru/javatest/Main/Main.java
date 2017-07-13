@@ -34,7 +34,7 @@ public class Main  {
 
         System.out.println(map1.toString());
 //Запускаем потоки согласно условию и прочитанным из файла данным формата JSON
-        threadRun.thread_run(map1.getCount_value(),map1.getCount_threads());
+      //  threadRun.thread_run(map1.getCount_value(),map1.getCount_threads());
     }
 
 
