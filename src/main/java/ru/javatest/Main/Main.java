@@ -6,6 +6,11 @@ import ru.javatest.Impl.GetJsoImpl;
 import ru.javatest.Impl.Keyboard_ent_Impl;
 import ru.javatest.Impl.ThreadRunImpl;
 import ru.javatest.Object.Map;
+import ru.javatest.Util.MyFileVisitor;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 /**
@@ -16,7 +21,19 @@ public class Main  {
 
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-        GetJsoImpl getJso= (GetJsoImpl) context.getBean("getJsoImpl");
+
+        //MyFileVisitor myFileVisitor = (MyFileVisitor)context.getBean("myFileVisitor");
+
+        //myFileVisitor.visitFile("c:/Java/_log/",lastModifiedTime());
+
+        Path startPath = Paths.get("c:/Java/_log/");
+        MyFileVisitor myFileVisitor = new MyFileVisitor("count");
+        Files.walkFileTree(startPath, myFileVisitor);
+       System.out.println("Имя файла  " +myFileVisitor.getPartOfName());
+
+
+
+        /*GetJsoImpl getJso= (GetJsoImpl) context.getBean("getJsoImpl");
         ThreadRunImpl threadRun = (ThreadRunImpl)context.getBean("threadRunImpl");
         Keyboard_ent_Impl keyenter = (Keyboard_ent_Impl)context.getBean("keyboard_ent_Impl");
 //Вводим конечное число, выводимое в потоке count_value
@@ -34,7 +51,7 @@ public class Main  {
 
         System.out.println(map1.toString());
 //Запускаем потоки согласно условию и прочитанным из файла данным формата JSON
-      //  threadRun.thread_run(map1.getCount_value(),map1.getCount_threads());
+        threadRun.thread_run(map1.getCount_value(),map1.getCount_threads());*/
     }
 
 
