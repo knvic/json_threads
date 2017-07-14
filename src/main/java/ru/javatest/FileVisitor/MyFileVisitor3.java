@@ -30,13 +30,11 @@ public class MyFileVisitor3 extends SimpleFileVisitor<Path> {
 
         Path newd = destination.resolve(source.relativize(path));
         try {
-            String ee = path.toString();
-            String rr = source.toString();
-            if (path.equals(source)) {
-                Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("Копируем директорию "+ path.getFileName().toString()+" из дирректории "+ path.getParent()+ " в каталог " + newd.getFileName());
-            }
-        } catch (IOException e) {
+
+            Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
+            //(path.equals(source))
+            // System.out.println("Копируем директорию "+ path.getFileName().toString()+" из дирректории "+ path.getParent()+ " в каталог " + newd.getFileName());
+                   } catch (IOException e) {
             e.printStackTrace();
         }
         return FileVisitResult.CONTINUE;
@@ -52,18 +50,22 @@ public class MyFileVisitor3 extends SimpleFileVisitor<Path> {
 
         Path newd = destination.resolve(source.relativize(path));
         try {
-
-            String ee = path.getParent().toString();
-            String rr = source.toString();
+            Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
             //if (path.getParent().toString().contains((source.getParent().toString())));
-            if (path.getParent().toString().equals((source.toString()))) {
-                Files.copy(path, newd, StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("Копируем файл " + path.getFileName().toString() + " из дирректории " + path.getParent() + " в каталог " + newd.getParent());
-            }
+            // System.out.println("Копируем файл " + path.getFileName().toString() + " из дирректории " + path.getParent() + " в каталог " + newd.getParent());
+
             } catch (IOException e) {
             e.printStackTrace();
         }
         return FileVisitResult.CONTINUE;
         }
+
+    @Override
+    public FileVisitResult visitFileFailed(Path path, IOException exc) throws IOException {
+        //  failed.add(path.toString());
+        System.out.println("Ошибка доступа к файлу"+ path.getFileName().toString()+" из дирректории "+ path.getParent());
+        return FileVisitResult.SKIP_SUBTREE;
+    }
+
     }
 

@@ -3,6 +3,7 @@ package ru.javatest.Main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.javatest.FileVisitor.MyFileVisitor3;
+import ru.javatest.FileVisitor.MyFileVisitor4;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,13 +34,14 @@ public class Main  {
         Files.walkFileTree(startPath, myFileVisitor2);*/
 
 
-        startPath = Paths.get("c:\\Java\\Test_directory\\");
+//Копирование
+      /*  startPath = Paths.get("c:\\Java\\Test_directory\\");
         MyFileVisitor3 myFileVisitor3 = new MyFileVisitor3("c:\\Java\\Test_directory\\1\\","c:\\Java\\Test_directory\\5\\");
-        Files.walkFileTree(startPath, myFileVisitor3);
-
-
-
-
+        Files.walkFileTree(startPath, myFileVisitor3);*/
+//Удаление!!
+        Path startPath4 = Paths.get("c:\\Java\\Test_directory\\5");
+        MyFileVisitor4 myFileVisitor4 = new MyFileVisitor4("c:\\Java\\Test_directory\\5\\");
+        Files.walkFileTree(startPath4, myFileVisitor4);
 
         /*GetJsoImpl getJso= (GetJsoImpl) context.getBean("getJsoImpl");
         ThreadRunImpl threadRun = (ThreadRunImpl)context.getBean("threadRunImpl");
