@@ -2,11 +2,7 @@ package ru.javatest.Main;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.javatest.Impl.GetJsoImpl;
-import ru.javatest.Impl.Keyboard_ent_Impl;
-import ru.javatest.Impl.ThreadRunImpl;
-import ru.javatest.Object.Map;
-import ru.javatest.Util.MyFileVisitor;
+import ru.javatest.FileVisitor.MyFileVisitor3;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,14 +18,26 @@ public class Main  {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 
-        //MyFileVisitor myFileVisitor = (MyFileVisitor)context.getBean("myFileVisitor");
+        //MyFileVisitor1 myFileVisitor = (MyFileVisitor1)context.getBean("myFileVisitor");
 
         //myFileVisitor.visitFile("c:/Java/_log/",lastModifiedTime());
 
-        Path startPath = Paths.get("c:/Java/_log/");
-        MyFileVisitor myFileVisitor = new MyFileVisitor("count");
-        Files.walkFileTree(startPath, myFileVisitor);
-       System.out.println("Имя файла  " +myFileVisitor.getPartOfName());
+        Path startPath = Paths.get("c:\\Java\\Test_directory\\");
+/*
+        MyFileVisitor1 myFileVisitor1 = new MyFileVisitor1("count");
+        Files.walkFileTree(startPath, myFileVisitor1);
+       System.out.println("Имя файла  " +myFileVisitor1.getPartOfName());
+
+
+        MyFileVisitor2 myFileVisitor2 = new MyFileVisitor2();
+        Files.walkFileTree(startPath, myFileVisitor2);*/
+
+
+        startPath = Paths.get("c:\\Java\\Test_directory\\");
+        MyFileVisitor3 myFileVisitor3 = new MyFileVisitor3("c:\\Java\\Test_directory\\1\\","c:\\Java\\Test_directory\\5\\");
+        Files.walkFileTree(startPath, myFileVisitor3);
+
+
 
 
 
