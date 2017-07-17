@@ -85,7 +85,7 @@ public class Main {
 
 
 //Запускаем потоки согласно условию и прочитанным из файла данным формата JSON
-        threadRun.thread_run_new(map1.getCount_value(), map1.getCount_threads());
+        threadRun.thread_run_new1(map1.getCount_value(), map1.getCount_threads());
 
 
     }

@@ -28,17 +28,20 @@ private AtomicInteger ci;
     @Override
     public String call() throws Exception {
 
-        while(ci.get() < count_vlue) {
-            ci.getAndSet(ci.incrementAndGet());
+        while(ci.intValue() < count_vlue) {
+            //ci.getAndSet(ci.incrementAndGet());
+           //ci.addAndGet(1);
+            ci.getAndAdd(1);
             //ci.incrementAndGet();
-            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + ci.get() + ") CI = " + ci);
+            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " + ci);
+
                 /*try {
                     Thread.sleep((locId < 4 ? locId : 5) * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }*/
         }
-        System.out.println("Thread " +  Thread.currentThread().getName() + " is finshed with ci = " + ci);
+        //System.out.println("Thread " +  Thread.currentThread().getName() + " is finshed with ci = " + ci);
 
 
         return Thread.currentThread().getName();
