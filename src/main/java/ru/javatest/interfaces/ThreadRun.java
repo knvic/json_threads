@@ -8,5 +8,5 @@ import java.util.concurrent.atomic.AtomicInteger;
 public interface ThreadRun {
     String thread_run(String count_vlue,String count_threads);
     String thread_run_new(String count_vlue, String count_threads);
-    String thread_run_new1(String count_vlue, String count_threads);
+
 }

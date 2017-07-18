@@ -1,34 +1,26 @@
 package ru.javatest.Object;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import ru.javatest.Util.Rand;
 
 import java.util.Date;
 import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by Николай on 12.07.2017.
- */
 public class MyCallable implements Callable<String> {
-    @Autowired
-    private Rand rrnd;
 
-    private long waitTime;
-    private long count;
+private int count_vlue;
+private AtomicInteger ai;
 
-    public MyCallable(int timeInMillis, int count_value){
-        this.waitTime = timeInMillis;
-        this.count = count_value;
+    public MyCallable(int count_vlue, AtomicInteger ai) {
+        this.count_vlue = count_vlue;
+        this.ai=ai;
     }
+
     @Override
     public String call() throws Exception {
-        //Thread.sleep(rrnd.getMinMax(50,1000));
-
-        for (int i=1;i<count+1;i++){
-            System.out.println("поток " + Thread.currentThread().getName()+ "  вывод числа "+i);
-            Thread.sleep(rrnd.getMinMax(50,1000));
+        while(ai.intValue() < count_vlue+1) {
+            int a=ai.getAndAdd(1);
+            System.out.println("Thread " +  Thread.currentThread().getName() + " is running current value = " + a);
         }
-
-        return Thread.currentThread().getName();
+    return Thread.currentThread().getName();
     }
 }
