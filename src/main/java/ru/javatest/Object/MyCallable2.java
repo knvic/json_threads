@@ -27,13 +27,14 @@ public class MyCallable2 implements Callable<String> {
     public String call() throws Exception {
 
         while( i < count_vlue) {
-
-           synchronized() {
+            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") vol = " + i );
+           synchronized(this) {
                i = i + 1;
+
            }
 
 
-            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " +i );
+          //  System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " +i );
 
                        }
         //System.out.println("Thread " +  Thread.currentThread().getName() + " is finshed with ci = " + ci);

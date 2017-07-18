@@ -14,13 +14,12 @@ public class MyCallable1 implements Callable<String> {
 
 
 private int count_vlue;
-private AtomicInteger ci;
+volatile AtomicInteger ci;
 
 
     public MyCallable1(int count_vlue, AtomicInteger ci) {
         this.count_vlue = count_vlue;
         this.ci=ci;
-
 
     }
 
@@ -28,12 +27,14 @@ private AtomicInteger ci;
     @Override
     public String call() throws Exception {
 
-        while(ci.intValue() < count_vlue) {
+        while(ci.intValue() < count_vlue+1) {
             //ci.getAndSet(ci.incrementAndGet());
            //ci.addAndGet(1);
-            ci.getAndAdd(1);
+         //   System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " + ci);
+            int a=ci.getAndAdd(1);
+            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " + a);
             //ci.incrementAndGet();
-            System.out.println("Thread " +  Thread.currentThread().getName() + " is running(" + System.currentTimeMillis() + ") CI = " + ci);
+
 
                 /*try {
                     Thread.sleep((locId < 4 ? locId : 5) * 1000);

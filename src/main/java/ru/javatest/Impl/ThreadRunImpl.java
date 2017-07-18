@@ -20,7 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class ThreadRunImpl implements ThreadRun{
 
-volatile int i;
+public static volatile int i;
+
 
     @Override
     public String thread_run_new1(String count_vlue,String count_threads){
@@ -58,8 +59,7 @@ volatile int i;
         System.out.println(new Date()+ "::" + "Запуск потоков, согласно полученных данных ::");
         ExecutorService executor = Executors.newFixedThreadPool(Integer.parseInt(count_threads));
         List<Future<String>> list = new ArrayList<Future<String>>();
-        //MyCallable callable = new MyCallable(0,Integer.parseInt(count_vlue));
-
+        ci.getAndSet(1);
         MyCallable1 callable = new MyCallable1(Integer.parseInt(count_vlue),ci);
         for(int i=1; i<Integer.parseInt(count_threads)+1; i++){
 
